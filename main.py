@@ -64,15 +64,15 @@ async def check(ctx):
 
     if not user_id.isdigit():
         message = {
-            "en": f"{ctx.author.mention} ❌ **Invalid UID!**\n➡️ Please use: `!ID 123456789`",
-            "fr": f"{ctx.author.mention} ❌ **UID invalide !**\n➡️ Veuillez fournir un UID valide sous la forme : `!ID 123456789`"
+            "en": f"{ctx.author.mention} ❌ **Invalid UID!**\n➡️ Please use: `!check 123456789`",
+            "fr": f"{ctx.author.mention} ❌ **UID invalide !**\n➡️ Veuillez fournir un UID valide sous la forme : `!check 123456789`"
         }
         await ctx.send(message[lang])
         return
 
     async with ctx.typing():
         try:
-            ban_status = await check_ban(user_id)
+            ban_status = await check_ban(user_)
         except Exception as e:
             await ctx.send(f"{ctx.author.mention} ⚠️ Error:\n```{str(e)}```")
             return
